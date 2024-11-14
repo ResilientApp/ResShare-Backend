@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, request
 import client
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -40,7 +42,18 @@ def get_other_peer_file_structure(peer_id):
 @app.route('/all_files', methods=['GET'])
 def get_all_files():
     all_files = client.get_all_file()
-    return jsonify(all_files), 200
+        # Transforming data into the desired array format
+    formatted_files = []
+    for peer_id, files in all_files.items():
+        if files:  # Only add entries with file data
+            for cid, file_info in files.items():
+                formatted_files.append({
+                    'peerID': peer_id,
+                    'fileName': file_info.get('file_name'),
+                    'fileSize': file_info.get('file_size'),
+                    'CID': cid
+                })
+    return jsonify({"data": formatted_files}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)

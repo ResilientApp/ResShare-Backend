@@ -1,17 +1,4 @@
----
-layout: article
-title: "ResShare: A Decentralized File Sharing Network Built on ResilientDB and IPFS"
-tags: ResilientDB IPFS Decentralized File Sharing ResShare
-aside:
-   toc: true
-article_header:
-   type: overlay
-   theme: dark
-   background_color: '#000'
-   background_image:
-      gradient: 'linear-gradient(135deg, rgba(0, 204, 154 , .2), rgba(51, 154, 154, .2))'
-      src: assets/images/resdb-gettingstarted/code_close_up.jpeg
----
+
 
 # ResShare
 ## A ResilientDB App
